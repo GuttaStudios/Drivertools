@@ -2,12 +2,23 @@
 
 //DriverTools app 4/17/2015 by Melvin A. Hunter
 
-// Using PDO_MySQL (connecting from App Engine)
-$dbc = new pdo('mysql:unix_socket=/cloudsql/db-drivertools-0002:sql-db-0001;dbname=drivertools', 'root', '1234');
+DEFINE ('db_user', 'root');
+DEFINE ('db_pass', '');
+DEFINE ('db_host', 'drivertools-guttastudios.rhcloud.com');
+DEFINE ('db_name', 'drivertools');
+
+// Using MySQL API (connecting from APp Engine)
+$dbc = mysql_connect('db_host', 'db_user', 'db_pass');
 if(!$dbc)
 {
-	
-	die("MySQL connection failed: " .mysql_error($dbc));
+	die("Database connection failed: " .mysql_error($dbc));
+	exit();
+}
+
+//Database Selection
+$dbs = mysql_select_db($dbc, db_name);
+{
+	die("Database connection failed: " .mysql_error($dbc));
 	exit();
 }
 

@@ -2,6 +2,11 @@
 use google\appengine\api\users\User;
 use google\appengine\api\users\UserService;
 
+DEFINE ('db_user', 'drivertools');
+DEFINE ('db_pass', 'lj5iix4542');
+DEFINE ('db_host', 'drivertools-guttastudios.rhcloud.com');
+DEFINE ('db_name', 'drivertools');
+
 $admin = UserService::getCurrentUser();
 
 if (!$admin) {
@@ -15,13 +20,20 @@ if (!$admin) {
   <?php
   echo 'Welcome, ' . htmlspecialchars($admin->getNickname());
   
-  // Using PDO_MySQL (connecting from App Engine)
-  $dbc = new pdo('mysql:unix_socket=/cloudsql/db-drivertools-0002:sql-db-0001;dbname=drivertools', 'root', '1234');
-  if(!$dbc)
-  {
-  	die("MySQL connection failed: " .mysql_error($dbc));
-  	exit();
-  }
+// Using MySQL API (connecting from APp Engine)
+$dbc = mysql_connect('db_host', 'db_user', 'db_pass');
+if(!$dbc)
+{
+	die("Database connection failed: " .mysql_error($dbc));
+	exit();
+}
+
+//Database Selection
+$dbs = mysql_select_db($dbc, db_name);
+{
+	die("Database connection failed: " .mysql_error($dbc));
+	exit();
+}
   
   $result = mysql_query($dbc, "SHOW COLUMNS FROM users");
   

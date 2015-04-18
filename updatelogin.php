@@ -2,9 +2,9 @@
 
 //DriverTools app 4/17/2015 by Melvin A. Hunter
 
-DEFINE ('db_user', 'root');
-DEFINE ('db_pass', '');
-DEFINE ('db_host', ':/cloudsql/db-drivertools-0002:sql-db-0001');
+DEFINE ('db_user', 'drivertools');
+DEFINE ('db_pass', 'lj5iix4542');
+DEFINE ('db_host', 'drivertools-guttastudios.rhcloud.com');
 DEFINE ('db_name', 'drivertools');
 
 // Using MySQL API (connecting from APp Engine)

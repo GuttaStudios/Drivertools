@@ -4,7 +4,7 @@
 
 DEFINE ('db_user', 'root');
 DEFINE ('db_pass', '');
-DEFINE ('db_host', ':/cloudsql/db-drivertools-0002:sql-db-0001');
+DEFINE ('db_host', 'drivertools-guttastudios.rhcloud.com');
 DEFINE ('db_name', 'drivertools');
 
 // Using MySQL API (connecting from APp Engine)
